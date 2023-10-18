@@ -3,4 +3,5 @@ from .models import Post
 
 # Register your models here.
 
-admin.site.register(Post)
+admin.site.register(Post,list_filter = ['title'],search_fields = ['id'])
+
