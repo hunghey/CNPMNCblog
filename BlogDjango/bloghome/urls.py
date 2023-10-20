@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, EditPostView, DeletePostView,AddPostView,AddCategoryView,CategoryView, CategoryListView
+from .views import HomeView, EditPostView, DeletePostView,AddPostView,AddCategoryView,AddCommentView,CategoryView, CategoryListView
 from .import views
 from django.contrib.auth import views as auth_views
 urlpatterns = [
@@ -10,5 +10,5 @@ urlpatterns = [
     path('add_category',AddCategoryView.as_view(), name='add-category'),
     path('category/<str:cats>/', CategoryView, name='category'),
     path('category-list/', CategoryListView, name='category-list'),
-
+    path('article/<int:pk>/comment', AddCommentView.as_view(), name='add_comment'),
 ]

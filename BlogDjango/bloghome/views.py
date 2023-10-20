@@ -49,3 +49,16 @@ def CategoryListView(request):
 def CategoryView(request, cats):
     category_posts = Post.objects.filter(category=cats)
     return render(request, 'categories.html',{'cats':cats.title(),'category_posts':category_posts})
+
+#  --------comment--------
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = AddCommentForm
+    template_name = 'add_comment.html'
+    # fields ='__all__'
+    
+    def form_valid(self, form):
+        form.instance.post_id=self.kwargs['pk']
+        return super().form_valid(form)
+    
+    success_url = reverse_lazy('home')
